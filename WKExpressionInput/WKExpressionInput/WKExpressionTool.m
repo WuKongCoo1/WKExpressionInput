@@ -11,7 +11,7 @@
 static NSDictionary *expressionDictionary;
 @implementation WKExpressionTool
 
-+ (NSAttributedString *)generateAttributeStringWithOriginalString:(NSString *)originalString
++ (NSAttributedString *)generateAttributeStringWithOriginalString:(NSString *)originalString fontSize:(CGFloat)fontSize
 {
     NSError *error = NULL;
     NSMutableAttributedString *resultAttrString = [[NSMutableAttributedString alloc] initWithString:originalString];
@@ -27,7 +27,7 @@ static NSDictionary *expressionDictionary;
             
             NSLog(@"%s %@\n", __FUNCTION__, stringResult);
             
-            NSAttributedString *expressionAttrString = [self getAttributeStringWithExpressionString:stringResult];
+            NSAttributedString *expressionAttrString = [self getAttributeStringWithExpressionString:stringResult fontSize:fontSize];
             
             [resultAttrString replaceCharactersInRange:resultRange withAttributedString:expressionAttrString];
         }
@@ -47,7 +47,7 @@ static NSDictionary *expressionDictionary;
     return expressionDictionary[imageName];
 }
 
-+ (NSAttributedString *)getAttributeStringWithExpressionString:(NSString *)expressionString
++ (NSAttributedString *)getAttributeStringWithExpressionString:(NSString *)expressionString fontSize:(CGFloat)fontSize
 {
     if (!expressionDictionary) {
         NSString *path = [[NSBundle mainBundle] pathForResource:@"ExpressionNameList.plist" ofType:nil];
@@ -59,7 +59,7 @@ static NSDictionary *expressionDictionary;
     UIImage *image = [UIImage imageNamed:imageName];
     attachment.image = image;
     attachment.text = [WKExpressionTool getExpressionStringWithImageName:imageName];
-    attachment.bounds = CGRectMake(0, 0, 14, 14);
+    attachment.bounds = CGRectMake(0, 0, fontSize, fontSize);
     NSAttributedString *appendAttributeStr = [NSAttributedString attributedStringWithAttachment:attachment];
     
     return appendAttributeStr;

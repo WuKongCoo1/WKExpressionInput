@@ -11,7 +11,7 @@
 
 @interface WKExpressionTool : NSObject
 
-+ (NSAttributedString *)generateAttributeStringWithOriginalString:(NSString *)originalString;
++ (NSAttributedString *)generateAttributeStringWithOriginalString:(NSString *)originalString fontSize:(CGFloat)fontSize;
 
 + (NSString *)getExpressionStringWithImageName:(NSString *)imageName;
 @end

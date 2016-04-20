@@ -16,6 +16,7 @@ WKExpressionViewDelegate
 @property (weak, nonatomic) IBOutlet UIView *expressionBG;
 @property (weak, nonatomic) IBOutlet WKExpressionTextView *textView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *expressionBGBottomConstraint;
 @property (strong, nonatomic) WKExpressionView *expView;
 @end
 
@@ -30,14 +31,37 @@ WKExpressionViewDelegate
     _expView.delegate = self;
     
     [_expressionBG addSubview:_expView];
+    
+    
+    [self observeKeyboard];
 }
+
+
+- (void)observeKeyboard
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyBoard:) name:UIKeyboardWillShowNotification object:nil];
+}
+
+- (void)showKeyBoard:(NSNotification *)noti
+{
+    NSDictionary *userInfo = noti.userInfo;
+    
+    CGRect keyBoardFrame = [userInfo[@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
+    CGFloat boardHeight = CGRectGetHeight(keyBoardFrame);
+    self.expressionBGBottomConstraint.constant = boardHeight;
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        [self.view layoutIfNeeded];
+    }];
+}
+
+
 
 - (void)viewDidLayoutSubviews
 {
     _expView.frame = _expressionBG.bounds;
     
     CGRect bounds = _expView.bounds;
-//    bounds.size.width = floor(bounds.size.width / 50) * 50;
     
     _expView.bounds = bounds;
     
@@ -49,7 +73,7 @@ WKExpressionViewDelegate
 
 - (void)expressionView:(WKExpressionView *)expressionView didSelectImageName:(NSString *)imageName
 {
-    [_textView setExpressionWithImageName:imageName fontSize:15];
+    [_textView setExpressionWithImageName:imageName fontSize:_textView.defaultFontSize];
 }
 
 - (void)expressionViewDidSelectDeleteButton:(WKExpressionView *)expressionView

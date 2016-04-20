@@ -9,12 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "WKExpressionView.h"
 
+@class WKExpressionCell;
+@protocol WKExpressionCellDelegate <NSObject>
+
+- (void)expressionCellDidSelectDeleteButton:(WKExpressionCell *)cell;
+- (void)expressionCell:(WKExpressionCell *)cell didSelectImageName:(NSString *)imageName;
+
+@end
+
 @interface WKExpressionCell : UICollectionViewCell
 
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, assign) NSInteger expressionNumber;
 @property (nonatomic, assign) NSInteger maxLineNumber;
 
-@property (nonatomic, weak) WKExpressionView *expressionView;
+@property (nonatomic, weak) id<WKExpressionCellDelegate> delegate;
 
 @end

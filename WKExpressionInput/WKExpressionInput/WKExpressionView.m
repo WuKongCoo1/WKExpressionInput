@@ -13,7 +13,8 @@
 @interface WKExpressionView ()
 <
 UICollectionViewDelegate,
-UICollectionViewDataSource
+UICollectionViewDataSource,
+WKExpressionCellDelegate
 >
 
 @property (nonatomic, assign) NSInteger numberOfExpressionInPage;
@@ -86,6 +87,7 @@ UICollectionViewDataSource
     cell.expressionNumber = self.numberOfExpressionInPage;
     cell.maxLineNumber = ExpressionNumberOfLine;
     cell.page = indexPath.row;
+    cell.delegate = self;
     
     return cell;
 }
@@ -96,22 +98,16 @@ UICollectionViewDataSource
     self.pageControl.currentPage = page;
 }
 
-- (void)selectDeleteButton
+- (void)expressionCellDidSelectDeleteButton:(WKExpressionCell *)cell
 {
     if ([self.delegate respondsToSelector:@selector(expressionViewDidSelectDeleteButton:)]) {
         [self.delegate expressionViewDidSelectDeleteButton:self];
     }
 }
 
-- (void)selectExpression:(UIButton *)sender
+- (void)expressionCell:(WKExpressionCell *)cell didSelectImageName:(NSString *)imageName
 {
-    NSString *imageName = [NSString stringWithFormat:@"Expression_%ld", sender.tag];
-    
-    
-    
-    if ([self.delegate respondsToSelector:@selector(expressionView:didSelectImageName:)]) {
-        [self.delegate expressionView:self didSelectImageName:imageName];
-    }
+    [self.delegate expressionView:self didSelectImageName:imageName];
 }
 
 - (UIImage *)createColorImageWithColor:(UIColor *)color

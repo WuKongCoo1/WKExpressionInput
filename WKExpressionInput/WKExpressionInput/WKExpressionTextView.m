@@ -9,27 +9,39 @@
 #import "WKExpressionTextView.h"
 #import "WKExpressionViewConfiguration.h"
 
+@interface WKExpressionTextView ()
+<
+UITextViewDelegate
+>
+@end
+
 @implementation WKExpressionTextView
+
+{
+    CGFloat _defaultFontSize;
+}
 
 - (void)awakeFromNib
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange:) name:UITextViewTextDidChangeNotification object:self];
+    
+    _defaultFontSize = self.font.pointSize;
+    
+    self.delegate = self;
 }
-
 
 
 - (void)setExpressionWithImageName:(NSString *)imageName fontSize:(CGFloat)fontSize
 {
-    //属性字符串
+    //富文本
     WKExpressionTextAttachment *attachment = [[WKExpressionTextAttachment alloc] initWithData:nil ofType:nil];
     UIImage *image = [UIImage imageNamed:imageName];
     attachment.image = image;
     attachment.text = [WKExpressionTool getExpressionStringWithImageName:imageName];
-    attachment.bounds = CGRectMake(0, 0, 14, 14);
+    attachment.bounds = CGRectMake(0, 0, fontSize, fontSize);
     NSAttributedString *insertAttributeStr = [NSAttributedString attributedStringWithAttachment:attachment];
     NSMutableAttributedString *resultAttrString = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedText];
     
-//    [resultAttrString appendAttributedString: appendAttributeStr];
     //在当前编辑位置插入字符串
     [resultAttrString insertAttributedString:insertAttributeStr atIndex:self.selectedRange.location];
     
@@ -39,6 +51,9 @@
     
     self.selectedRange = NSMakeRange(tempRange.location + 1, 0);
     
+    [self.textStorage addAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:_defaultFontSize]} range:NSMakeRange(0, self.attributedText.length)];
+    [self scrollRangeToVisible:self.selectedRange];
+
 }
 
 
@@ -47,8 +62,20 @@
 {
     NSLog(@"%@", self.attributedText);
     
-
-    self.attributedText = [WKExpressionTool generateAttributeStringWithOriginalString:[self  parseAttributeTextToNormalString:self.attributedText]];
+    NSRange tempRange = self.selectedRange;
+     self.attributedText = [WKExpressionTool generateAttributeStringWithOriginalString:[self  parseAttributeTextToNormalString:self.attributedText] fontSize:_defaultFontSize];
+    
+    [self.textStorage addAttributes:self.typingAttributes range:NSMakeRange(0, self.attributedText.length)];
+    
+    
+    
+     [self.textStorage addAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:_defaultFontSize]} range:NSMakeRange(0, self.attributedText.length)];
+    
+     [self scrollRangeToVisible:self.selectedRange];
+    
+    self.selectedRange = NSMakeRange(tempRange.location, 0);
+    
+    
 }
 
 - (NSString *)parseAttributeTextToNormalString:(NSAttributedString *)attributedString
@@ -91,7 +118,14 @@
     [originalString deleteCharactersInRange:self.selectedRange];
     self.attributedText = originalString;
     
-    
+    NSLog(@"--%@", NSStringFromRange(self.selectedRange));
+}
+
+#pragma mark - UITextViewDelegate
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    NSLog(@"%@", NSStringFromRange(range));
+    return YES;
 }
 
 @end

@@ -36,7 +36,7 @@
             [expressionButton setImage:[UIImage imageNamed:@"DeleteEmoticonBtn"] forState:UIControlStateNormal];
             img.image = [UIImage imageNamed:@"DeleteEmoticonBtn"];
             
-            [expressionButton addTarget:_expressionView action:@selector(selectDeleteButton) forControlEvents:UIControlEventTouchUpInside];
+            [expressionButton addTarget:self action:@selector(selectDeleteButton) forControlEvents:UIControlEventTouchUpInside];
             
         }else{
             
@@ -46,7 +46,7 @@
 //            NSLog(@"%@", imageName);
             
             expressionButton.tag = _page * (_expressionNumber - 1) + i + 1;
-            [expressionButton addTarget:_expressionView action:@selector(selectExpression:) forControlEvents:UIControlEventTouchUpInside];
+            [expressionButton addTarget:self action:@selector(selectExpression:) forControlEvents:UIControlEventTouchUpInside];
 
         }
         CGRect bounds = expressionButton.imageView.bounds;
@@ -66,6 +66,22 @@
         img.frame = expressionButton.frame;
 //        [self.contentView addSubview:img];
         [self.contentView addSubview:expressionButton];
+    }
+}
+
+- (void)selectDeleteButton
+{
+    if ([self.delegate respondsToSelector:@selector(expressionCellDidSelectDeleteButton:)]) {
+        [self.delegate expressionCellDidSelectDeleteButton:self];
+    }
+}
+
+- (void)selectExpression:(UIButton *)btn
+{
+    NSString *imageName = [NSString stringWithFormat:@"Expression_%ld", btn.tag];
+    
+    if ([self.delegate respondsToSelector:@selector(expressionCell:didSelectImageName:)]) {
+        [self.delegate expressionCell:self didSelectImageName:imageName];
     }
 }
 
