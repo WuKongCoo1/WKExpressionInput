@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67555D861CC7194200F9804C /* ExpressionNameList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67555D781CC7194200F9804C /* ExpressionNameList.plist */; };
+		67555D871CC7194200F9804C /* WKExpressionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67555D7A1CC7194200F9804C /* WKExpressionCell.m */; };
+		67555D881CC7194200F9804C /* WKExpressionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67555D7B1CC7194200F9804C /* WKExpressionCell.xib */; };
+		67555D891CC7194200F9804C /* WKExpressionTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 67555D7D1CC7194200F9804C /* WKExpressionTextAttachment.m */; };
+		67555D8A1CC7194200F9804C /* WKExpressionTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67555D7F1CC7194200F9804C /* WKExpressionTextView.m */; };
+		67555D8B1CC7194200F9804C /* WKExpressionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 67555D811CC7194200F9804C /* WKExpressionTool.m */; };
+		67555D8C1CC7194200F9804C /* WKExpressionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67555D831CC7194200F9804C /* WKExpressionView.m */; };
+		67555D8D1CC7194200F9804C /* WKExpressionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67555D841CC7194200F9804C /* WKExpressionView.xib */; };
 		676524CA1CC5C85300798D8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 676524C91CC5C85300798D8A /* main.m */; };
 		676524CD1CC5C85400798D8A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 676524CC1CC5C85400798D8A /* AppDelegate.m */; };
 		676524D01CC5C85400798D8A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 676524CF1CC5C85400798D8A /* ViewController.m */; };
@@ -35,6 +43,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		67555D781CC7194200F9804C /* ExpressionNameList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ExpressionNameList.plist; sourceTree = "<group>"; };
+		67555D791CC7194200F9804C /* WKExpressionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKExpressionCell.h; sourceTree = "<group>"; };
+		67555D7A1CC7194200F9804C /* WKExpressionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKExpressionCell.m; sourceTree = "<group>"; };
+		67555D7B1CC7194200F9804C /* WKExpressionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKExpressionCell.xib; sourceTree = "<group>"; };
+		67555D7C1CC7194200F9804C /* WKExpressionTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKExpressionTextAttachment.h; sourceTree = "<group>"; };
+		67555D7D1CC7194200F9804C /* WKExpressionTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKExpressionTextAttachment.m; sourceTree = "<group>"; };
+		67555D7E1CC7194200F9804C /* WKExpressionTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKExpressionTextView.h; sourceTree = "<group>"; };
+		67555D7F1CC7194200F9804C /* WKExpressionTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKExpressionTextView.m; sourceTree = "<group>"; };
+		67555D801CC7194200F9804C /* WKExpressionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKExpressionTool.h; sourceTree = "<group>"; };
+		67555D811CC7194200F9804C /* WKExpressionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKExpressionTool.m; sourceTree = "<group>"; };
+		67555D821CC7194200F9804C /* WKExpressionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKExpressionView.h; sourceTree = "<group>"; };
+		67555D831CC7194200F9804C /* WKExpressionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKExpressionView.m; sourceTree = "<group>"; };
+		67555D841CC7194200F9804C /* WKExpressionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKExpressionView.xib; sourceTree = "<group>"; };
+		67555D851CC7194200F9804C /* WKExpressionViewConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKExpressionViewConfiguration.h; sourceTree = "<group>"; };
 		676524C51CC5C85300798D8A /* WKExpressionInput.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKExpressionInput.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		676524C91CC5C85300798D8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		676524CB1CC5C85300798D8A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -78,6 +100,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67555D771CC7194200F9804C /* WKExpressionInput */ = {
+			isa = PBXGroup;
+			children = (
+				67555D781CC7194200F9804C /* ExpressionNameList.plist */,
+				67555D791CC7194200F9804C /* WKExpressionCell.h */,
+				67555D7A1CC7194200F9804C /* WKExpressionCell.m */,
+				67555D7B1CC7194200F9804C /* WKExpressionCell.xib */,
+				67555D7C1CC7194200F9804C /* WKExpressionTextAttachment.h */,
+				67555D7D1CC7194200F9804C /* WKExpressionTextAttachment.m */,
+				67555D7E1CC7194200F9804C /* WKExpressionTextView.h */,
+				67555D7F1CC7194200F9804C /* WKExpressionTextView.m */,
+				67555D801CC7194200F9804C /* WKExpressionTool.h */,
+				67555D811CC7194200F9804C /* WKExpressionTool.m */,
+				67555D821CC7194200F9804C /* WKExpressionView.h */,
+				67555D831CC7194200F9804C /* WKExpressionView.m */,
+				67555D841CC7194200F9804C /* WKExpressionView.xib */,
+				67555D851CC7194200F9804C /* WKExpressionViewConfiguration.h */,
+			);
+			path = WKExpressionInput;
+			sourceTree = "<group>";
+		};
 		676524BC1CC5C85300798D8A = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +144,7 @@
 		676524C71CC5C85300798D8A /* WKExpressionInput */ = {
 			isa = PBXGroup;
 			children = (
+				67555D771CC7194200F9804C /* WKExpressionInput */,
 				676524CB1CC5C85300798D8A /* AppDelegate.h */,
 				676524CC1CC5C85400798D8A /* AppDelegate.m */,
 				676524CE1CC5C85400798D8A /* ViewController.h */,
@@ -247,8 +291,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				676524D81CC5C85400798D8A /* LaunchScreen.storyboard in Resources */,
+				67555D881CC7194200F9804C /* WKExpressionCell.xib in Resources */,
+				67555D8D1CC7194200F9804C /* WKExpressionView.xib in Resources */,
 				676524D51CC5C85400798D8A /* Assets.xcassets in Resources */,
 				676524D31CC5C85400798D8A /* Main.storyboard in Resources */,
+				67555D861CC7194200F9804C /* ExpressionNameList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,9 +320,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67555D891CC7194200F9804C /* WKExpressionTextAttachment.m in Sources */,
 				676524D01CC5C85400798D8A /* ViewController.m in Sources */,
+				67555D8C1CC7194200F9804C /* WKExpressionView.m in Sources */,
+				67555D8B1CC7194200F9804C /* WKExpressionTool.m in Sources */,
 				676524CD1CC5C85400798D8A /* AppDelegate.m in Sources */,
+				67555D8A1CC7194200F9804C /* WKExpressionTextView.m in Sources */,
 				676524CA1CC5C85300798D8A /* main.m in Sources */,
+				67555D871CC7194200F9804C /* WKExpressionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +553,7 @@
 				676524F41CC5C85400798D8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		676524F51CC5C85400798D8A /* Build configuration list for PBXNativeTarget "WKExpressionInputTests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +562,7 @@
 				676524F71CC5C85400798D8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		676524F81CC5C85400798D8A /* Build configuration list for PBXNativeTarget "WKExpressionInputUITests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +571,7 @@
 				676524FA1CC5C85400798D8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

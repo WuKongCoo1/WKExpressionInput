@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="dsc-4c-1oU" customClass="WKExpressionView">
+            <rect key="frame" x="0.0" y="0.0" width="402" height="181"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="Afg-9I-naW">
+                    <rect key="frame" x="113" y="144" width="177" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="177" id="8GO-2B-jsZ"/>
+                        <constraint firstAttribute="height" constant="37" id="t2A-vp-OZ9"/>
+                    </constraints>
+                    <color key="pageIndicatorTintColor" red="0.73333333333333328" green="0.73333333333333328" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="currentPageIndicatorTintColor" red="0.54509803921568623" green="0.54509803921568623" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
+                </pageControl>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjb-Ni-5sP">
+                    <rect key="frame" x="345" y="144" width="57" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="57" id="MD4-c1-S5J"/>
+                        <constraint firstAttribute="height" constant="37" id="rL6-fp-CA8"/>
+                    </constraints>
+                    <state key="normal" title="发送">
+                        <color key="titleColor" red="0.5607843137254902" green="0.5607843137254902" blue="0.5607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="TcT-1U-PlF">
+                    <rect key="frame" x="0.0" y="0.0" width="402" height="144"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="xGa-OW-z6V"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Lxx-93-DWB">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="xGa-OW-z6V"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <outlet property="dataSource" destination="dsc-4c-1oU" id="DBO-hz-hnI"/>
+                        <outlet property="delegate" destination="dsc-4c-1oU" id="V2B-KT-6gL"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Afg-9I-naW" firstAttribute="centerX" secondItem="dsc-4c-1oU" secondAttribute="centerX" id="0zh-Dq-uEQ"/>
+                <constraint firstItem="TcT-1U-PlF" firstAttribute="centerY" secondItem="dsc-4c-1oU" secondAttribute="centerY" id="Bqt-bU-Q27"/>
+                <constraint firstItem="TcT-1U-PlF" firstAttribute="centerX" secondItem="dsc-4c-1oU" secondAttribute="centerX" id="GS8-9c-gUp"/>
+                <constraint firstAttribute="trailing" secondItem="TcT-1U-PlF" secondAttribute="trailing" id="GiI-mV-z4c"/>
+                <constraint firstItem="TcT-1U-PlF" firstAttribute="top" secondItem="dsc-4c-1oU" secondAttribute="top" id="K6C-HW-5sa"/>
+                <constraint firstItem="TcT-1U-PlF" firstAttribute="leading" secondItem="dsc-4c-1oU" secondAttribute="leading" id="K73-a4-JLQ"/>
+                <constraint firstItem="TcT-1U-PlF" firstAttribute="leading" secondItem="dsc-4c-1oU" secondAttribute="leading" id="KvG-OW-Gfs"/>
+                <constraint firstItem="TcT-1U-PlF" firstAttribute="height" secondItem="dsc-4c-1oU" secondAttribute="height" id="M5U-Ub-de7"/>
+                <constraint firstItem="hjb-Ni-5sP" firstAttribute="top" secondItem="TcT-1U-PlF" secondAttribute="bottom" id="PJy-pD-lsj"/>
+                <constraint firstAttribute="bottom" secondItem="TcT-1U-PlF" secondAttribute="bottom" constant="37" id="Tzl-JV-aVr"/>
+                <constraint firstAttribute="trailing" secondItem="hjb-Ni-5sP" secondAttribute="trailing" id="eP7-Ag-BrZ"/>
+                <constraint firstItem="Afg-9I-naW" firstAttribute="top" secondItem="TcT-1U-PlF" secondAttribute="bottom" id="hmx-1w-Bjg"/>
+                <constraint firstItem="TcT-1U-PlF" firstAttribute="width" secondItem="dsc-4c-1oU" secondAttribute="width" id="p6z-8c-tRM"/>
+                <constraint firstAttribute="trailing" secondItem="TcT-1U-PlF" secondAttribute="trailing" id="vW0-9J-xHI"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Bqt-bU-Q27"/>
+                    <exclude reference="GiI-mV-z4c"/>
+                    <exclude reference="K73-a4-JLQ"/>
+                    <exclude reference="M5U-Ub-de7"/>
+                    <exclude reference="p6z-8c-tRM"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="collectionView" destination="TcT-1U-PlF" id="0OE-WD-5Mq"/>
+                <outlet property="pageControl" destination="Afg-9I-naW" id="eyU-VL-EeQ"/>
+                <outlet property="sendButton" destination="hjb-Ni-5sP" id="R8N-if-5mS"/>
+            </connections>
+            <point key="canvasLocation" x="-210" y="40.5"/>
+        </view>
+    </objects>
+</document>
