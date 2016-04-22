@@ -11,7 +11,8 @@
 
 @interface ViewController ()
 <
-WKExpressionViewDelegate
+WKExpressionViewDelegate,
+WKExpressionTextViewDelegate
 >
 @property (weak, nonatomic) IBOutlet UIView *expressionBG;
 @property (weak, nonatomic) IBOutlet WKExpressionTextView *textView;
@@ -29,6 +30,7 @@ WKExpressionViewDelegate
     
     _expView = [WKExpressionView expressionView];
     _expView.delegate = self;
+    _textView.expressionDelegate = self;
     
     [_expressionBG addSubview:_expView];
     
@@ -84,7 +86,22 @@ WKExpressionViewDelegate
     NSMutableAttributedString *originalString = [[NSMutableAttributedString alloc] initWithAttributedString:self.textView.attributedText];
     [originalString deleteCharactersInRange:NSMakeRange(originalString.length - 1, 1)];
     _textView.attributedText = originalString;
+    
+    [_textView textChanged];
+    
 }
+
+- (void)expressionViewDidSelectSendButton:(WKExpressionView *)expressionView
+{
+    NSLog(@"发送");
+}
+
+- (void)expressionTextDidChange:(WKExpressionTextView *)textView textLength:(NSInteger)length
+{
+    [self.expView setSendButtonState:length == 0 ? NO : YES];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

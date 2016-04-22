@@ -40,15 +40,17 @@ WKExpressionCellDelegate
     return [[[NSBundle mainBundle] loadNibNamed:@"WKExpressionView" owner:nil options:nil] firstObject];
 }
 
+
+
 - (void)awakeFromNib
 {
     UINib *cellNIb = [UINib nibWithNibName:@"WKExpressionCell" bundle:nil];
     
     [self.collectionView registerNib:cellNIb forCellWithReuseIdentifier:cellIdentifier];
     
-    [self.sendButton setBackgroundImage:[self createColorImageWithColor:[UIColor colorWithRed:250 / 255.f green:250 / 255.f blue:250 / 255.f alpha:1.f]] forState:UIControlStateNormal];
+    [self.sendButton setBackgroundImage:[self createColorImageWithColor:[UIColor colorWithRed:250 / 255.f green:250 / 255.f blue:250 / 255.f alpha:1.f]] forState:UIControlStateDisabled];
     
-    [self.sendButton setBackgroundImage:[self createColorImageWithColor:[UIColor blueColor]] forState:UIControlStateSelected];
+    [self.sendButton setBackgroundImage:[self createColorImageWithColor:[UIColor blueColor]] forState:UIControlStateNormal];
     
     [self.sendButton setBackgroundImage:[self createColorImageWithColor:[UIColor blueColor]] forState:UIControlStateHighlighted];
     
@@ -109,6 +111,19 @@ WKExpressionCellDelegate
 {
     [self.delegate expressionView:self didSelectImageName:imageName];
 }
+
+- (IBAction)didSelectSendButton:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(expressionViewDidSelectSendButton:)]) {
+        [self.delegate expressionViewDidSelectSendButton:sender];
+    }
+}
+
+
+- (void)setSendButtonState:(BOOL)enabled
+{
+    self.sendButton.enabled = enabled;
+}
+
 
 - (UIImage *)createColorImageWithColor:(UIColor *)color
 {

@@ -8,12 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+@class WKExpressionTextView;
+@protocol WKExpressionTextViewDelegate <UITextViewDelegate>
+
+- (void)expressionTextDidChange:(WKExpressionTextView *)textView textLength:(NSInteger)length;
+
+@end
+
+
 @interface WKExpressionTextView : UITextView 
 
 @property (nonatomic, strong) NSString *originalString;//用于粘贴复制的字符串
 @property (nonatomic, assign) CGFloat defaultFontSize;
+@property (nonatomic, weak) id<WKExpressionTextViewDelegate> expressionDelegate;
 
 
 - (void)setExpressionWithImageName:(NSString *)imageName fontSize:(CGFloat)fontSize;
+
+- (void)textChanged;
 
 @end

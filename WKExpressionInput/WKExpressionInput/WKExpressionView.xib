@@ -35,6 +35,9 @@
                     <state key="highlighted">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didSelectSendButton:" destination="dsc-4c-1oU" eventType="touchUpInside" id="nlZ-ee-0i2"/>
+                    </connections>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="TcT-1U-PlF">
                     <rect key="frame" x="0.0" y="0.0" width="402" height="144"/>

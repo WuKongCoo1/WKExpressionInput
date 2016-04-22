@@ -12,7 +12,7 @@
 
 - (void)expressionView:(WKExpressionView *)expressionView didSelectImageName:(NSString *)imageName;
 - (void)expressionViewDidSelectDeleteButton:(WKExpressionView *)expressionView;
-
+- (void)expressionViewDidSelectSendButton:(WKExpressionView *)expressionView;
 @end
 
 @interface WKExpressionView : UIView
@@ -23,8 +23,20 @@
 
 @property (weak, nonatomic) id<WKExpressionViewDelegate> delegate;
 
-+ (instancetype)expressionView;
 
-- (void)selectDeleteButton;
-- (void)selectExpression:(UIButton *)sender;
++ (instancetype)expressionView;
+/**
+ *  点击发送按button
+ *
+ *  @param sender 发送button
+ */
+- (IBAction)didSelectSendButton:(id)sender;
+
+/**
+ *  设置发送按钮状态
+ *
+ *  @param enable 是否可选
+ */
+- (void)setSendButtonState:(BOOL)enabled;
+
 @end

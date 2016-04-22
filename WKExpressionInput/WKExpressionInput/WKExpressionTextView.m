@@ -53,7 +53,7 @@ UITextViewDelegate
     
     [self.textStorage addAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:_defaultFontSize]} range:NSMakeRange(0, self.attributedText.length)];
     [self scrollRangeToVisible:self.selectedRange];
-
+    
 }
 
 
@@ -74,6 +74,7 @@ UITextViewDelegate
      [self scrollRangeToVisible:self.selectedRange];
     
     self.selectedRange = NSMakeRange(tempRange.location, 0);
+    
     
     
 }
@@ -98,6 +99,10 @@ UITextViewDelegate
     return normalString;
 }
 
+
+
+
+
 #pragma mark - Actions
 - (void)copy:(id)sender
 {
@@ -121,11 +126,16 @@ UITextViewDelegate
     NSLog(@"--%@", NSStringFromRange(self.selectedRange));
 }
 
-#pragma mark - UITextViewDelegate
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+- (void)textViewDidChange:(UITextView *)textView
 {
-    NSLog(@"%@", NSStringFromRange(range));
-    return YES;
+    if ([self.expressionDelegate respondsToSelector:@selector(expressionTextDidChange:textLength:)]) {
+        [self.expressionDelegate expressionTextDidChange:self textLength:self.attributedText.length];
+    }
+}
+
+- (void)textChanged
+{
+    [self textViewDidChange:self];
 }
 
 @end
