@@ -23,10 +23,9 @@
 - (void)setPage:(NSInteger)page
 {
     [self.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-//    ExpressionLineLineOfPage * ExpressionNumberOfLine
     _page = page;
     CGFloat expressionWH = self.bounds.size.width / ExpressionNumberOfLine;
-//    expressionWH = 30.f;
+
     for (int i = 0 ; i < _expressionNumber; i++) {
         
         UIButton *expressionButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -43,7 +42,7 @@
             NSString *imageName = [NSString stringWithFormat:@"Expression_%ld", _page * (_expressionNumber - 1) + i + 1];
             [expressionButton setImage:[self scaleImage:[UIImage imageNamed:imageName] toSize:CGSizeMake(30, 30)] forState:UIControlStateNormal];
             img.image = [UIImage imageNamed:imageName];
-//            NSLog(@"%@", imageName);
+
             
             expressionButton.tag = _page * (_expressionNumber - 1) + i + 1;
             [expressionButton addTarget:self action:@selector(selectExpression:) forControlEvents:UIControlEventTouchUpInside];
@@ -64,7 +63,7 @@
         
         expressionButton.frame = CGRectMake(x, y, expressionWH, expressionWH);
         img.frame = expressionButton.frame;
-//        [self.contentView addSubview:img];
+
         [self.contentView addSubview:expressionButton];
     }
 }

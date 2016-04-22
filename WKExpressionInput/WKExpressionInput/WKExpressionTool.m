@@ -33,9 +33,6 @@ static NSDictionary *expressionDictionary;
         }
         
     }
-
-
-    
     return resultAttrString;
 }
 
@@ -47,13 +44,18 @@ static NSDictionary *expressionDictionary;
     return expressionDictionary[imageName];
 }
 
+/**
+ *  通过表情生成富文本
+ *
+ *  @param expressionString 表情名
+ *  @param fontSize         对应字体大小
+ *
+ *  @return 富文本
+ */
 + (NSAttributedString *)getAttributeStringWithExpressionString:(NSString *)expressionString fontSize:(CGFloat)fontSize
 {
-    if (!expressionDictionary) {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"ExpressionNameList.plist" ofType:nil];
-        expressionDictionary = [NSDictionary dictionaryWithContentsOfFile:path];
-    }
-    NSString *imageName = expressionDictionary[expressionString];
+   
+    NSString *imageName = [self getExpressionStringWithImageName:expressionString];
     
     WKExpressionTextAttachment *attachment = [[WKExpressionTextAttachment alloc] initWithData:nil ofType:nil];
     UIImage *image = [UIImage imageNamed:imageName];
@@ -64,6 +66,17 @@ static NSDictionary *expressionDictionary;
     
     return appendAttributeStr;
 
+}
+
+- (NSString *)getImageNameWithExpressionName:(NSString *)expressionName
+{
+    if (!expressionDictionary) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"ExpressionNameList.plist" ofType:nil];
+        expressionDictionary = [NSDictionary dictionaryWithContentsOfFile:path];
+    }
+    NSString *imageName = expressionDictionary[expressionName];
+    
+    return imageName;
 }
 
 @end

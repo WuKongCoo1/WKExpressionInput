@@ -23,6 +23,20 @@ UITextViewDelegate
 
 - (void)awakeFromNib
 {
+    [self setup];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
+- (void)setup
+{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange:) name:UITextViewTextDidChangeNotification object:self];
     
     _defaultFontSize = self.font.pointSize;
@@ -52,8 +66,10 @@ UITextViewDelegate
     self.selectedRange = NSMakeRange(tempRange.location + 1, 0);
     
     [self.textStorage addAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:_defaultFontSize]} range:NSMakeRange(0, self.attributedText.length)];
+    
     [self scrollRangeToVisible:self.selectedRange];
     
+    [self textChanged];
 }
 
 
@@ -74,9 +90,6 @@ UITextViewDelegate
      [self scrollRangeToVisible:self.selectedRange];
     
     self.selectedRange = NSMakeRange(tempRange.location, 0);
-    
-    
-    
 }
 
 - (NSString *)parseAttributeTextToNormalString:(NSAttributedString *)attributedString
@@ -124,6 +137,7 @@ UITextViewDelegate
     self.attributedText = originalString;
     
     NSLog(@"--%@", NSStringFromRange(self.selectedRange));
+    [self textChanged];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
